@@ -109,9 +109,13 @@ impl Launcher {
 
             Task::perform(
                 async {
-                    DiscordIPC::new(DISCORD_APP_ID)
-                        .await
-                        .map_err(|e| e.to_string())
+                    loop {
+                        if let Ok(client) = DiscordIPC::new(DISCORD_APP_ID).await {
+                            return Ok(client);
+                        }
+
+                        tokio::time::sleep(Duration::from_secs(3)).await
+                    }
                 },
                 Message::DiscordIPCClientLaunched,
             )
