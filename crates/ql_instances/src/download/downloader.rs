@@ -362,10 +362,10 @@ impl GameDownloader {
     }
 
     pub fn send_progress(&self, progress: DownloadProgress, print: bool) {
-        if let Some(ref sender) = self.sender {
-            if sender.send(progress).is_ok() {
-                return;
-            }
+        if let Some(ref sender) = self.sender
+            && sender.send(progress).is_ok()
+        {
+            return;
         }
         if print {
             pt!("{progress}");

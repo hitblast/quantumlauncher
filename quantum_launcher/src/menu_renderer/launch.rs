@@ -71,7 +71,7 @@ impl Launcher {
         let tab_body = if let Some(selected) = &self.selected_instance {
             match menu.tab {
                 LaunchTab::Buttons => self.get_tab_main(menu, selected),
-                LaunchTab::Log => self.get_tab_logs(menu, selected.kind).into(),
+                LaunchTab::Log => self.get_tab_logs(selected.kind).into(),
                 LaunchTab::Edit => {
                     if let Some(menu) = &menu.edit_instance {
                         menu.view(selected, self.custom_jar.as_ref())
@@ -253,12 +253,7 @@ impl Launcher {
             .width(98)
     }
 
-    fn get_tab_logs<'element>(
-        &'element self,
-        // TODO: wtf is this doing here
-        _menu: &'element MenuLaunch,
-        kind: InstanceKind,
-    ) -> widget::Column<'element, Message, LauncherTheme> {
+    fn get_tab_logs(&self, kind: InstanceKind) -> widget::Column<'_, Message, LauncherTheme> {
         const TEXT_SIZE: f32 = 12.0;
 
         let State::Launch(menu) = &self.state else {

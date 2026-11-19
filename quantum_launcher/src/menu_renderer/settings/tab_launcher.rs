@@ -6,7 +6,7 @@ use ql_core::LAUNCHER_DIR;
 
 use crate::{
     config::LauncherConfig,
-    icons::{self},
+    icons,
     menu_renderer::{Column, button_with_icon, checkered_list, tooltip, tsubtitle},
     state::{LauncherSettingsMessage, MenuLauncherSettings, Message, SettingsOutmsg},
 };
