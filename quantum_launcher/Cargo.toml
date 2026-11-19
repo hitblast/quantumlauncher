@@ -62,7 +62,7 @@ semver.workspace = true
 futures.workspace = true
 
 chrono.workspace = true  # Logging time/date
-pastey = "0.2.*"         # Icon widget macro
+pastey = "0.2"           # Icon widget macro
 rfd.workspace = true     # File picker
 constcat = "0.6"
 rand = "0.10"            # Instance folder unique id
@@ -81,7 +81,7 @@ terminal_size = "0.4"
 
 # OS APIs
 notify = "8"
-open = "5.4.5"
+open = "5"
 dirs.workspace = true
 dark-light = "3"
 
